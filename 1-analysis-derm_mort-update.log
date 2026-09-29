@@ -1,0 +1,78 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\1-analysis-derm_mort-update.log
+  log type:  text
+ opened on:  28 Sep 2026, 21:08:28
+
+. 
+. sum melanoma_mortality_rate, det
+
+                   melanoma_mortality_rate
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%           .6             .3
+ 5%          1.1             .4
+10%          1.4             .4       Obs               2,671
+25%            2             .5       Sum of wgt.       2,671
+
+50%          2.7                      Mean           3.203182
+                        Largest       Std. dev.      2.267025
+75%          3.7           25.4
+90%          5.2           29.6       Variance       5.139402
+95%          6.7           29.9       Skewness       4.926493
+99%           12           37.3       Kurtosis       48.58438
+
+. 
+. sum dermatologists, det
+
+                       dermatologists
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               2,671
+25%            0              0       Sum of wgt.       2,671
+
+50%            0                      Mean           4.701984
+                        Largest       Std. dev.      21.19178
+75%            1            230
+90%            8            312       Variance       449.0917
+95%           21            454       Skewness        11.6966
+99%           85            465       Kurtosis       199.0413
+
+. 
+. sum dermatology_rate , det
+
+                      dermatology_rate
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs               2,671
+25%            0              0       Sum of wgt.       2,671
+
+50%            0                      Mean           1.438424
+                        Largest       Std. dev.      4.059372
+75%         1.95          31.65
+90%         4.52          34.75       Variance        16.4785
+95%         6.57          59.24       Skewness       18.11338
+99%        12.55         142.62       Kurtosis        570.107
+
+. 
+. tab anyderm
+
+    anyderm |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      1,734       64.92       64.92
+          1 |        937       35.08      100.00
+------------+-----------------------------------
+      Total |      2,671      100.00
+
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\1-analysis-derm_mort-update.log
+  log type:  text
+ closed on:  28 Sep 2026, 21:08:28
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

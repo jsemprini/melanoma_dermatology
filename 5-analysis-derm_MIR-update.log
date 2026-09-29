@@ -1,0 +1,31 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\5-analysis-derm_MIR-update.log
+  log type:  text
+ opened on:  28 Sep 2026, 21:24:41
+
+. 
+. sum mir, det
+
+                             mir
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0196078       .0108992
+ 5%      .034632       .0116959
+10%       .04329       .0121065       Obs               2,308
+25%     .0644258       .0138249       Sum of wgt.       2,308
+
+50%     .0919124                      Mean           .1040946
+                        Largest       Std. dev.      .0586963
+75%     .1288502       .3895349
+90%     .1789709        .412987       Variance       .0034453
+95%     .2171717       .4492753       Skewness       1.569572
+99%      .309322       .4646018       Kurtosis       6.854935
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\5-analysis-derm_MIR-update.log
+  log type:  text
+ closed on:  28 Sep 2026, 21:24:41
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

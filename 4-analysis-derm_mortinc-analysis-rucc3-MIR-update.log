@@ -1,0 +1,119 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\4-analysis-derm_mortinc-analysis-rucc3-MIR-update.
+> log
+  log type:  text
+ opened on:  28 Sep 2026, 21:27:43
+
+. 
+. foreach y in mir{
+  2. areg `y' i.metro##i.anyderm [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+  3. 
+. margins anyderm , dydx(metro)
+  4. 
+. areg `y' i.rural_cat##i.anyderm [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+  5. 
+. margins anyderm , dydx(rural_cat)
+  6. 
+. }
+
+Linear regression, absorbing indicators          Number of obs     = 977870435
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(3, 46)          =     19.45
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.2431
+                                                 Adj R-squared     =    0.2431
+                                                 Root MSE          =    0.0353
+
+                             (Std. err. adjusted for 47 clusters in state_fips)
+-------------------------------------------------------------------------------
+              |               Robust
+          mir | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+      1.metro |  -.0095414   .0026859    -3.55   0.001    -.0149478    -.004135
+    1.anyderm |  -.0114085   .0036689    -3.11   0.003    -.0187935   -.0040234
+              |
+metro#anyderm |
+         1 1  |  -.0071433   .0042486    -1.68   0.099    -.0156953    .0014087
+              |
+        _cons |   .1141796   .0030496    37.44   0.000      .108041    .1203182
+-------------------------------------------------------------------------------
+
+Conditional marginal effects                         Number of obs = 977870435
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  1.metro
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+0.metro      |  (base outcome)
+-------------+----------------------------------------------------------------
+1.metro      |
+     anyderm |
+          0  |  -.0095414   .0026859    -3.55   0.001    -.0149478    -.004135
+          1  |  -.0166847   .0039874    -4.18   0.000     -.024711   -.0086584
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+Linear regression, absorbing indicators          Number of obs     = 977870435
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(5, 46)          =     11.80
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.2449
+                                                 Adj R-squared     =    0.2449
+                                                 Root MSE          =    0.0353
+
+                                 (Std. err. adjusted for 47 clusters in state_fips)
+-----------------------------------------------------------------------------------
+                  |               Robust
+              mir | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+------------------+----------------------------------------------------------------
+        rural_cat |
+               2  |   .0102614   .0029069     3.53   0.001     .0044102    .0161127
+               3  |   .0016149   .0052741     0.31   0.761    -.0090014    .0122312
+                  |
+        1.anyderm |  -.0185644   .0030634    -6.06   0.000    -.0247308   -.0123981
+                  |
+rural_cat#anyderm |
+             2 1  |   .0057125   .0043557     1.31   0.196    -.0030551      .01448
+             3 1  |    .075445   .0197587     3.82   0.000     .0356729    .1152172
+                  |
+            _cons |   .1046526   .0025072    41.74   0.000     .0996058    .1096994
+-----------------------------------------------------------------------------------
+
+Conditional marginal effects                         Number of obs = 977870435
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  2.rural_cat 3.rural_cat
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+1.rural_cat  |  (base outcome)
+-------------+----------------------------------------------------------------
+2.rural_cat  |
+     anyderm |
+          0  |   .0102614   .0029069     3.53   0.001     .0044102    .0161127
+          1  |   .0159739   .0038498     4.15   0.000     .0082247    .0237231
+-------------+----------------------------------------------------------------
+3.rural_cat  |
+     anyderm |
+          0  |   .0016149   .0052741     0.31   0.761    -.0090014    .0122312
+          1  |   .0770599   .0189671     4.06   0.000     .0388812    .1152387
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\4-analysis-derm_mortinc-analysis-rucc3-MIR-update.
+> log
+  log type:  text
+ closed on:  28 Sep 2026, 21:27:44
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

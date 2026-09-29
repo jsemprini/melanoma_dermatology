@@ -1,0 +1,153 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\2-analysis-derm_mort-analysis-rucc2-update.log
+  log type:  text
+ opened on:  28 Sep 2026, 21:09:45
+
+. 
+. 
+. areg melanoma_mortality_rate i.metro##i.anyderm [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(3, 46)          =     18.78
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1283
+                                                 Adj R-squared     =    0.1283
+                                                 Root MSE          =    0.8390
+
+                             (Std. err. adjusted for 47 clusters in state_fips)
+-------------------------------------------------------------------------------
+              |               Robust
+melanoma_mo~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+      1.metro |  -.1105116   .0759641    -1.45   0.153    -.2634194    .0423961
+    1.anyderm |  -.1393324   .0832414    -1.67   0.101    -.3068886    .0282239
+              |
+metro#anyderm |
+         1 1  |  -.1890179   .0926761    -2.04   0.047    -.3755652   -.0024707
+              |
+        _cons |   3.017907   .0578161    52.20   0.000     2.901529    3.134284
+-------------------------------------------------------------------------------
+
+. 
+. margins metro#anyderm
+
+Adjusted predictions                                 Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+
+-------------------------------------------------------------------------------
+              |            Delta-method
+              |     Margin   std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+metro#anyderm |
+         0 0  |   3.017907   .0578161    52.20   0.000     2.901529    3.134284
+         0 1  |   2.878574   .0658721    43.70   0.000     2.745981    3.011168
+         1 0  |   2.907395    .058081    50.06   0.000     2.790484    3.024306
+         1 1  |   2.579045   .0122852   209.93   0.000     2.554316    2.603773
+-------------------------------------------------------------------------------
+
+. 
+. margins metro , dydx(anyderm)
+
+Conditional marginal effects                         Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  1.anyderm
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+0.anyderm    |  (base outcome)
+-------------+----------------------------------------------------------------
+1.anyderm    |
+       metro |
+          0  |  -.1393324   .0832414    -1.67   0.101    -.3068886    .0282239
+          1  |  -.3283503   .0649699    -5.05   0.000     -.459128   -.1975726
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+. 
+. areg melanoma_mortality_rate i.rural_cat##i.anyderm [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(5, 46)          =     12.86
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1327
+                                                 Adj R-squared     =    0.1327
+                                                 Root MSE          =    0.8369
+
+                                 (Std. err. adjusted for 47 clusters in state_fips)
+-----------------------------------------------------------------------------------
+                  |               Robust
+melanoma_mortal~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+------------------+----------------------------------------------------------------
+        rural_cat |
+               2  |   .0472065   .0730639     0.65   0.521    -.0998634    .1942764
+               3  |   .5592825   .2039546     2.74   0.009     .1487432    .9698218
+                  |
+        1.anyderm |  -.3307415   .0648405    -5.10   0.000    -.4612586   -.2002243
+                  |
+rural_cat#anyderm |
+             2 1  |   .2511051   .0894318     2.81   0.007     .0710882     .431122
+             3 1  |   .3991468   .4190007     0.95   0.346     -.444258    1.242552
+                  |
+            _cons |   2.909113   .0580494    50.11   0.000     2.792265     3.02596
+-----------------------------------------------------------------------------------
+
+. 
+. margins rural_cat#anyderm
+
+Adjusted predictions                                 Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+
+-----------------------------------------------------------------------------------
+                  |            Delta-method
+                  |     Margin   std. err.      t    P>|t|     [95% conf. interval]
+------------------+----------------------------------------------------------------
+rural_cat#anyderm |
+             1 0  |   2.909113   .0580494    50.11   0.000     2.792265     3.02596
+             1 1  |   2.578371   .0123096   209.46   0.000     2.553593    2.603149
+             2 0  |   2.956319   .0587091    50.36   0.000     2.838144    3.074495
+             2 1  |   2.876683   .0657223    43.77   0.000     2.744391    3.008975
+             3 0  |   3.468395   .1874203    18.51   0.000     3.091138    3.845653
+             3 1  |   3.536801   .3623444     9.76   0.000     2.807439    4.266162
+-----------------------------------------------------------------------------------
+
+. 
+. margins rural_cat , dydx(anyderm)
+
+Conditional marginal effects                         Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  1.anyderm
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+0.anyderm    |  (base outcome)
+-------------+----------------------------------------------------------------
+1.anyderm    |
+   rural_cat |
+          1  |  -.3307415   .0648405    -5.10   0.000    -.4612586   -.2002243
+          2  |  -.0796364   .0841951    -0.95   0.349    -.2491123    .0898395
+          3  |   .0684053   .3973064     0.17   0.864     -.731331    .8681417
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\2-analysis-derm_mort-analysis-rucc2-update.log
+  log type:  text
+ closed on:  28 Sep 2026, 21:09:45
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

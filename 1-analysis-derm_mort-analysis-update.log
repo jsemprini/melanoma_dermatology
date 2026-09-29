@@ -1,0 +1,197 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\1-analysis-derm_mort-analysis-update.log
+  log type:  text
+ opened on:  28 Sep 2026, 21:08:28
+
+. 
+. 
+. areg melanoma_mortality_rate c.dermatology_rate [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(1, 46)          =     41.49
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1181
+                                                 Adj R-squared     =    0.1181
+                                                 Root MSE          =    0.8439
+
+                                (Std. err. adjusted for 47 clusters in state_fips)
+----------------------------------------------------------------------------------
+                 |               Robust
+melanoma_morta~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+dermatology_rate |  -.0319349   .0049578    -6.44   0.000    -.0419144   -.0219555
+           _cons |   2.787992   .0181726   153.42   0.000     2.751412    2.824571
+----------------------------------------------------------------------------------
+
+. 
+. margins , dydx(dermatology_rate)
+
+Average marginal effects                             Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  dermatology_rate
+
+----------------------------------------------------------------------------------
+                 |            Delta-method
+                 |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+dermatology_rate |  -.0319349   .0049578    -6.44   0.000    -.0419144   -.0219555
+----------------------------------------------------------------------------------
+
+. margins , dyex(dermatology_rate)
+
+Average marginal effects                             Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/ex wrt:  dermatology_rate
+
+----------------------------------------------------------------------------------
+                 |            Delta-method
+                 |      dy/ex   std. err.      t    P>|t|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+dermatology_rate |  -.1170565   .0181726    -6.44   0.000     -.153636    -.080477
+----------------------------------------------------------------------------------
+
+. 
+. 
+. 
+. areg melanoma_mortality_rate c.dermatologists [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(1, 46)          =     20.30
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1193
+                                                 Adj R-squared     =    0.1193
+                                                 Root MSE          =    0.8434
+
+                              (Std. err. adjusted for 47 clusters in state_fips)
+--------------------------------------------------------------------------------
+               |               Robust
+melanoma_mor~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+dermatologists |  -.0018826   .0004178    -4.51   0.000    -.0027236   -.0010416
+         _cons |   2.747427   .0169756   161.85   0.000     2.713257    2.781597
+--------------------------------------------------------------------------------
+
+. 
+. margins , dydx(dermatologists)
+
+Average marginal effects                             Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  dermatologists
+
+--------------------------------------------------------------------------------
+               |            Delta-method
+               |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+dermatologists |  -.0018826   .0004178    -4.51   0.000    -.0027236   -.0010416
+--------------------------------------------------------------------------------
+
+. margins , dyex(dermatologists)
+
+Average marginal effects                             Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/ex wrt:  dermatologists
+
+--------------------------------------------------------------------------------
+               |            Delta-method
+               |      dy/ex   std. err.      t    P>|t|     [95% conf. interval]
+---------------+----------------------------------------------------------------
+dermatologists |  -.0764922   .0169756    -4.51   0.000    -.1106623    -.042322
+--------------------------------------------------------------------------------
+
+. 
+. 
+. areg melanoma_mortality_rate i.anyderm [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(1, 46)          =     45.10
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1224
+                                                 Adj R-squared     =    0.1224
+                                                 Root MSE          =    0.8418
+
+                            (Std. err. adjusted for 47 clusters in state_fips)
+------------------------------------------------------------------------------
+             |               Robust
+melanoma_m~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   1.anyderm |  -.3691549    .054968    -6.72   0.000    -.4797998     -.25851
+       _cons |   2.970087   .0445444    66.68   0.000     2.880424     3.05975
+------------------------------------------------------------------------------
+
+. 
+. margins , dydx(anyderm)
+
+Conditional marginal effects                         Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  1.anyderm
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   1.anyderm |  -.3691549    .054968    -6.72   0.000    -.4797998     -.25851
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+. *margins , eydx(anyderm)
+. 
+. 
+. areg melanoma_mortality_rate i.anyderm c.dermatology_rate [fw=pop] , vce(cluster state_fips) absorb(state_fips)
+
+Linear regression, absorbing indicators          Number of obs     = 972076140
+Absorbed variable: state_fips                    No. of categories =        47
+                                                 F(2, 46)          =     33.90
+                                                 Prob > F          =    0.0000
+                                                 R-squared         =    0.1290
+                                                 Adj R-squared     =    0.1290
+                                                 Root MSE          =    0.8387
+
+                                (Std. err. adjusted for 47 clusters in state_fips)
+----------------------------------------------------------------------------------
+                 |               Robust
+melanoma_morta~e | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+       1.anyderm |  -.2783852   .0567079    -4.91   0.000    -.3925322   -.1642382
+dermatology_rate |  -.0207281     .00384    -5.40   0.000    -.0284576   -.0129986
+           _cons |   2.972508   .0450689    65.95   0.000     2.881789    3.063227
+----------------------------------------------------------------------------------
+
+. 
+. margins , dydx(anyderm)
+
+Average marginal effects                             Number of obs = 972076140
+Model VCE: Robust
+
+Expression: Linear prediction, predict()
+dy/dx wrt:  1.anyderm
+
+------------------------------------------------------------------------------
+             |            Delta-method
+             |      dy/dx   std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   1.anyderm |  -.2783852   .0567079    -4.91   0.000    -.3925322   -.1642382
+------------------------------------------------------------------------------
+Note: dy/dx for factor levels is the discrete change from the base level.
+
+. *margins , eydx(anyderm)
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\jsemprini\OneDrive - Des Moines University\6-Student-Research\Su26-Elective\iii-Danielle\2-Derm\results\1-analysis-derm_mort-analysis-update.log
+  log type:  text
+ closed on:  28 Sep 2026, 21:08:29
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
