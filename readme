@@ -1,0 +1,18 @@
+Mortality Data:
+
+Surveillance, Epidemiology, and End Results (SEER) Program (www.seer.cancer.gov) SEER*Stat Database: Mortality - All COD, Aggregated With County, Total U.S. (1990-2024) <Katrina/Rita Population Adjustment>, National Cancer Institute, DCCPS, Surveillance Research Program, released March 2026.  Underlying mortality data provided by NCHS (www.cdc.gov/nchs).
+
+ {Race, Sex, Year Dth, State, Cnty, Reg.Race and origin recode (NHW, NHB, NHAIAN, NHAPI, Hispanic)} = 'Non-Hispanic White'
+AND {Race, Sex, Year Dth, State, Cnty, Reg.Year of death recode} = '2020-2024'
+
+Melanoma ICD
+
+
+Incidence Data: USCS County
+https://gis.cdc.gov/Cancer/USCS/
+
+Dermatology Data: https://data.hrsa.gov/topics/health-workforce/nchwa/ahrf
+2019, dermatology
+
+
+RUCC: 2013 codes
